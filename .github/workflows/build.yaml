@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: [main] # 1.这里是你当前主分支的名字,我这里是main,你的可能是master
+    branches: [master] # 1.这里是你当前主分支的名字,我这里是main,你的可能是master
     paths-ignore:
       - README.md ## 2.表示该文件更新不会触发Github Actions部署,自行配置即可
 
