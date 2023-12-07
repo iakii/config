@@ -20,7 +20,7 @@ jobs:
       - run: npm install # 安装依赖
       - run: npm run build # 打包
 
-    deploy:
+    publish:
       environment:
         name: github-pages
         url: ${{ steps.deployment.outputs.page_url }}
