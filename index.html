@@ -109,6 +109,14 @@
         });
       });
 
+      fetch("/public")
+        .then((res) => {
+          return res.text();
+        })
+        .then((res) => {
+          console.log(res);
+        });
+
       const list = [
         {
           title: "开发助手",
