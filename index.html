@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="image/png" href="public/icon.png" rel="shortcut icon" />
+
+    <title>熊凯的网页</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+      }
+
+      /* 	210 x 297 mm */
+      .container {
+        width: 210mm;
+        min-height: 100vh;
+        max-height: 297mm;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 16px 32px;
+      }
+      h1 {
+        color: #333;
+      }
+      ul {
+        padding: 0;
+        list-style-type: square;
+      }
+      li {
+        margin: 10px 0;
+      }
+      a {
+        text-decoration: none;
+        /* color: #161616; */
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table style="width: 100%; border-collapse: collapse">
+        <tr>
+          <td style="display: flex; gap: 32px">
+            <img src="public/icon.png" alt="熊凯的网页" width="100" />
+            <div>
+              <h1>熊凯的网页</h1>
+              <p>欢迎访问我的个人网页！</p>
+            </div>
+          </td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <p>这是一个简单的个人网页，包含了一些有用的链接和工具。</p>
+          </td>
+        </tr>
+
+        <tbody id="content"></tbody>
+      </table>
+    </div>
+
+    <script>
+      const list = [
+        {
+          title: "处理JSON字符串的JavaScript数据",
+          url: "./json_js/",
+          type: "开发助手",
+          date: "2025.05.18",
+        },
+        {
+          title: "处理JSON字符串转TS模型",
+          url: "./json2ts/",
+          type: "开发助手",
+          date: "2025.05.18",
+        },
+        {
+          title: "处理JSON字符串转Dart模型",
+          url: "./json2dart/",
+          type: "开发助手",
+          date: "2025.05.18",
+        },
+        {
+          title: "解析YAML文件",
+          url: "./parse_yaml/",
+          type: "开发助手",
+          date: "2025.05.18",
+        },
+        {
+          title: "临床采血管功能指南",
+          url: "./临床采血管功能指南.html",
+          type: "医疗常识",
+          date: "2025.05.12",
+        },
+        {
+          title: "给药途径概述与分类",
+          url: "./给药途径概述与分类.html",
+          type: "医疗常识",
+          date: "2025.05.12",
+        },
+        {
+          title: "医嘱频次缩写指南",
+          url: "./医嘱频次缩写指南.html",
+          type: "医疗常识",
+          date: "2025.05.12",
+        },
+      ];
+
+      const content = document.getElementById("content");
+
+      content.innerHTML = list
+        .map((item) => {
+          return `
+          <tr>
+            <td colspan="2" style="display: flex; align-items: center">
+              <span>「${item.type}」</span>
+              <a href="${item.url}">${item.title}</a>
+            </td>
+            <td
+              colspan="2"
+              style="text-align: right; font-size: 14px; color: #666"
+            >
+              ${item.date}
+            </td>
+          </tr>
+        `;
+        })
+        .join("");
+    </script>
+  </body>
+</html>
