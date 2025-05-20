@@ -1,114 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iAkii的个人资源目录</title>
     <link type="image/png" href="public/icon.png" rel="shortcut icon" />
-
-    <title>熊凯的网页</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap");
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        font-family: "Noto Sans SC", sans-serif;
+        background-color: #f8f8f8;
         color: #333;
-        margin: 0;
+        line-height: 1.6;
       }
-
-      /* 	210 x 297 mm */
-      .container {
-        width: 210mm;
-        min-height: 100vh;
-        max-height: 297mm;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 16px 32px;
+      .red-header {
+        background: linear-gradient(135deg, #d40000 0%, #a00000 100%);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
-      h1 {
-        color: #333;
+      .document-card {
+        box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        transition: transform 0.3s ease;
       }
-      ul {
-        padding: 0;
-        list-style-type: square;
+      .document-card:hover {
+        transform: translateY(-5px);
       }
-      li {
-        margin: 10px 0;
+      .section-icon {
+        background: linear-gradient(135deg, #d40000 0%, #a00000 100%);
+        width: 48px;
+        height: 48px;
       }
-      a {
-        text-decoration: none;
-        /* color: #161616; */
+      .item-badge {
+        background-color: rgba(212, 0, 0, 0.1);
       }
-      a:hover {
-        text-decoration: underline;
+      .stamp {
+        border: 2px solid #d40000;
+        transform: rotate(15deg);
+        opacity: 0.9;
+      }
+      .star-divider::before,
+      .star-divider::after {
+        content: "★";
+        color: #d40000;
+        margin: 0 15px;
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <table style="width: 100%; border-collapse: collapse">
-        <tr>
-          <td style="display: flex; gap: 32px">
-            <img src="public/icon.png" alt="熊凯的网页" width="100" />
-            <div>
-              <h1>熊凯的网页</h1>
-              <p>欢迎访问我的个人网页！</p>
-            </div>
-          </td>
-          <td></td>
-        </tr>
+  <body class="min-h-screen pb-20">
+    <!-- 红头标题 -->
+    <div class="red-header py-6 text-white text-center">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wider">
+        iAkii的个人资源目录
+      </h1>
+      <p class="mt-2 text-lg opacity-90">2025年5月版</p>
+    </div>
 
-        <tr>
-          <td colspan="2">
-            <p>这是一个简单的个人网页，包含了一些有用的链接和工具。</p>
-          </td>
-        </tr>
+    <!-- 主要内容 -->
+    <div class="container mx-auto px-4 mt-10 max-w-4xl">
+      <!-- 文档简介 -->
+      <div class="document-card bg-white p-8 mb-10">
+        <div class="flex items-center justify-center mb-6">
+          <div class="star-divider text-xl font-bold text-gray-800">
+            个人工作资源汇总
+          </div>
+        </div>
+        <p class="text-center text-gray-600 mb-2">
+          本目录收录了iAkii整理的各类开发工具和医疗常识资源
+        </p>
+        <p class="text-center text-sm text-gray-500">最后更新：2025年5月20日</p>
+      </div>
 
-        <tbody id="content"></tbody>
-      </table>
+      <div id="content"></div>
+
+      <!-- 页脚 -->
+      <div
+        class="flex flex-col md:flex-row justify-between items-center mt-12 text-sm text-gray-500"
+      >
+        <div class="mb-4 md:mb-0">
+          <p>制表人：<a href="https://github.com/iakii">iAkii</a></p>
+          <p class="mt-1">发布日期：2025年5月20日</p>
+        </div>
+        <div
+          class="stamp px-4 py-2 text-center inline-block text-red-600 font-bold"
+        >
+          个人专用
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <div class="text-center text-xs text-gray-400 mt-16">
+      <p class="mt-1">最后更新时间为2025-05-20，星期二</p>
+      <p class="mt-1">
+        <a href="https://wenxiaobai.com" class="hover:text-gray-600"
+          >wenxiaobai.com</a
+        >
+      </p>
     </div>
 
     <script>
+      // 平滑滚动效果
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
       const list = [
         {
-          title: "处理JSON字符串的JavaScript数据",
-          url: "./json_js/",
-          type: "开发助手",
-          date: "2025.05.18",
+          title: "开发助手",
+          icon: "fa-code",
+          items: [
+            {
+              title: "处理JSON字符串的JavaScript数据",
+              url: "./json_js/",
+              type: "开发助手",
+              icon: "fa-file-code",
+              date: "2025.05.18",
+            },
+            {
+              title: "处理JSON字符串转TS模型",
+              url: "./json2ts/",
+              type: "开发助手",
+              icon: "fa-exchange-alt",
+              date: "2025.05.18",
+            },
+            {
+              title: "处理JSON字符串转Dart模型",
+              url: "./json2dart/",
+              type: "开发助手",
+              icon: "fa-android",
+              date: "2025.05.18",
+            },
+            {
+              title: "解析YAML文件",
+              url: "./parse_yaml/",
+              type: "开发助手",
+              icon: "fa-cog",
+              date: "2025.05.18",
+            },
+          ],
         },
         {
-          title: "处理JSON字符串转TS模型",
-          url: "./json2ts/",
-          type: "开发助手",
-          date: "2025.05.18",
-        },
-        {
-          title: "处理JSON字符串转Dart模型",
-          url: "./json2dart/",
-          type: "开发助手",
-          date: "2025.05.18",
-        },
-        {
-          title: "解析YAML文件",
-          url: "./parse_yaml/",
-          type: "开发助手",
-          date: "2025.05.18",
-        },
-        {
-          title: "临床采血管功能指南",
-          url: "./临床采血管功能指南.html",
-          type: "医疗常识",
-          date: "2025.05.12",
-        },
-        {
-          title: "给药途径概述与分类",
-          url: "./给药途径概述与分类.html",
-          type: "医疗常识",
-          date: "2025.05.12",
-        },
-        {
-          title: "医嘱频次缩写指南",
-          url: "./医嘱频次缩写指南.html",
-          type: "医疗常识",
-          date: "2025.05.12",
+          title: "医疗常识",
+          icon: "fa-heartbeat",
+          items: [
+            {
+              title: "临床采血管功能指南",
+              url: "./临床采血管功能指南.html",
+              type: "医疗常识",
+              date: "2025.05.12",
+              icon: "fa-vial",
+            },
+            {
+              title: "给药途径概述与分类",
+              url: "./给药途径概述与分类.html",
+              type: "医疗常识",
+              date: "2025.05.12",
+              icon: "fa-pills",
+            },
+            {
+              title: "医嘱频次缩写指南",
+              url: "./医嘱频次缩写指南.html",
+              type: "医疗常识",
+              date: "2025.05.12",
+              icon: "fa-prescription",
+            },
+          ],
         },
       ];
 
@@ -117,18 +183,39 @@
       content.innerHTML = list
         .map((item) => {
           return `
-          <tr>
-            <td colspan="2" style="display: flex; align-items: center">
-              <span>「${item.type}」</span>
-              <a href="${item.url}">${item.title}</a>
-            </td>
-            <td
-              colspan="2"
-              style="text-align: right; font-size: 14px; color: #666"
-            >
-              ${item.date}
-            </td>
-          </tr>
+         <div class="document-card bg-white p-8 mb-10">
+        <div class="flex items-center mb-6">
+          <div
+            class="section-icon rounded-full flex items-center justify-center mr-4"
+          >
+            <i class="fas ${item.icon} text-white text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-800">${item.title}</h2>
+        </div>
+
+        <div class="space-y-4">
+           ${item.items
+             .map((subItem) => {
+               return `
+             
+             <a
+            class="flex flex-col md:flex-row md:items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50"
+            style="cursor: pointer"
+            href="${subItem.url}"
+            rel="noopener noreferrer"
+          >
+            <div class="flex items-center">
+              <i class="fas ${subItem.icon} text-red-600 mr-3"></i>
+              <span class="font-medium">${subItem.title}</span>
+            </div>
+            <span class="text-sm text-gray-500 mt-1 md:mt-0">${subItem.date}</span>
+          </a>
+             `;
+             })
+             .join("")}
+        </div>
+      </div>
+
         `;
         })
         .join("");
